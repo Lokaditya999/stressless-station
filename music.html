@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relaxing Music by Genre</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #dbeafe, #e0f2fe);
+      margin: 0;
+      padding: 0;
+      color: #1e293b;
+    }
+    header {
+      background-color: #3b82f6;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #1e40af;
+    }
+    select, button {
+      font-size: 1rem;
+      padding: 0.5rem;
+      margin-top: 1rem;
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+    }
+    .music-list {
+      display: none;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .track {
+      background: #f0f9ff;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    audio {
+      width: 100%;
+      outline: none;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #1e40af;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Relaxing Music for Stress Relief</h1>
+    <p>Select your mood, and let the music soothe your soul</p>
+  </header>
+
+  <main>
+    <h2>Choose Your Music Genre</h2>
+    <select id="genreSelect">
+      <option value="">-- Select Genre --</option>
+      <option value="nature">Nature Sounds</option>
+      <option value="instrumental">Instrumental</option>
+      <option value="lofi">Lo-Fi Chill</option>
+      <option value="ambient">Ambient</option>
+      <option value="Most popular">Most popular</option>
+    </select>
+    <button onclick="showTracks()">Listen Now</button>
+
+    <div id="musicContainer">
+      <div id="nature" class="music-list">
+        <div class="track">
+          <p><strong>Ocean Waves</strong></p>
+          <audio controls>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+          </audio>
+        </div>
+        <div class="track">
+          <p><strong>Gentle Rain</strong></p>
+          <audio controls>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+          </audio>
+        </div>
+      </div>
+
+      <div id="instrumental" class="music-list">
+        <div class="track">
+          <p><strong>Piano Peace</strong></p>
+          <audio controls>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mpeg">
+          </audio>
+        </div>
+        <div class="track">
+          <p><strong>Guitar Drift</strong></p>
+          <audio controls>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" type="audio/mpeg">
+          </audio>
+        </div>
+      </div>
+
+      <div id="lofi" class="music-list">
+        <div class="track">
+          <p><strong>Study Beats</strong></p>
+          <audio controls>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3" type="audio/mpeg">
+          </audio>
+        </div>
+        <div class="track">
+          <p><strong>Night Chill</strong></p>
+          <audio controls>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3" type="audio/mpeg">
+          </audio>
+        </div>
+      </div>
+
+      <div id="ambient" class="music-list">
+        <div class="track">
+          <p><strong>Deep Space</strong></p>
+          <audio controls>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3" type="audio/mpeg">
+          </audio>
+        </div>
+        <div class="track">
+          <p><strong>Light Breeze</strong></p>
+          <audio controls>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
+          </audio>
+        </div>
+      </div>
+
+      <div id="Most popular" class="music-list">
+        <div class="track">
+          <p><strong>Mezalqin Chubina.ge</strong></p>
+          <audio controls>
+            <source src="vinland.mp3" type="audio/mpeg">
+          </audio>
+        </div>
+        <div class="track">
+          <p><strong>Flute Music of Lord Krishna</strong></p>
+          <audio controls>
+            <source src="kris.mp3" type="audio/mpeg">
+          </audio>
+        </div>
+         <div class="track">
+          <p><strong>Ar Rehman</strong></p>
+          <audio controls>
+            <source src="Ar rehman.mp3" type="audio/mpeg">
+          </audio>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 MindWell Music. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function showTracks() {
+      const genre = document.getElementById("genreSelect").value;
+      const allGenres = document.querySelectorAll(".music-list");
+
+      allGenres.forEach(list => list.style.display = "none");
+      if (genre) {
+        document.getElementById(genre).style.display = "flex";
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Every Day Wins</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      animation: glowBackground 5s infinite alternate;
+    }
+
+    @keyframes glowBackground {
+      0% {
+        background-color: #000000;
+        box-shadow: inset 0 0 20px #25283b, inset 0 0 60px #25283b;
+      }
+      100% {
+        background-color: #111111;
+        box-shadow: inset 0 0 40px #4e5bff, inset 0 0 120px #4e5bff;
+      }
+    }
+
+    .banner {
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    .headline {
+      font-size: 3em;
+      font-weight: bold;
+      margin-bottom: 30px;
+      animation: slideIn 3s ease-in-out infinite alternate;
+      background: linear-gradient(90deg, #ff6ec4, #7873f5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    @keyframes slideIn {
+      0% {
+        transform: translateX(-20px);
+      }
+      100% {
+        transform: translateX(20px);
+      }
+    }
+
+    .content-block {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 20px;
+      border-bottom: 1px solid #333;
+    }
+
+    .content-block img {
+      width: 150px;
+      transition: transform 0.3s ease;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    }
+
+    .content-block img:hover {
+      transform: scale(1.4);
+    }
+
+    .info {
+      flex: 1;
+    }
+
+    .info h2 {
+      margin-bottom: 8px;
+      font-size: 1.5em;
+      color: #ff6ec4;
+    }
+
+    .info p {
+      color: #ddd;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="banner">
+    <h1 class="headline">Every Day Wins</h1>
+  </div>
+
+  <div class="content-block">
+    <a href="meditatiion.html" target="_blank">
+      <img src="med.jpg" alt="Meditation" />
+    </a>
+    <div class="info">
+      <h2>Meditation</h2>
+      <p>Calm your mind and focus your energy with guided meditation. A few minutes daily can boost mental clarity.</p>
+    </div>
+  </div>
+
+  <div class="content-block">
+    <a href="journal.html" target="_blank">
+      <img src="journalise.jpg" alt="Journaling" />
+    </a>
+    <div class="info">
+      <h2>Journalising your thoughts</h2>
+      <p>Write your thoughts, track habits, and reflect on your day. A great way to gain insight into your progress.</p>
+    </div>
+  </div>
+
+  <div class="content-block">
+    <a href="music.html" target="_blank">
+      <img src="musics.jpg" alt="Music" />
+    </a>
+    <div class="info">
+      <h2>Music</h2>
+      <p>Let your soul breathe through music. Whether you're relaxing or focusing, the right tunes uplift your spirit.</p>
+    </div>
+  </div>
+
+  <div class="content-block">
+    <a href="exercise.html" target="_blank">
+      <img src="collegedance.png" alt="Exercise" />
+    </a>
+    <div class="info">
+      <h2>Exercise</h2>
+      <p>Move your body and stay active. Dance, run, stretch—every step is a victory for your health and happiness.</p>
+    </div>
+  </div>
+
+  <div class="content-block">
+    <a href="celebrate.html" target="_blank">
+      <img src="smaller.jpg" alt="Celebrate" />
+    </a>
+    <div class="info">
+      <h2>Celebrate your small wins</h2>
+      <p>Even small wins matter. Take a moment to reward yourself and appreciate how far you've come.</p>
+    </div>
+  </div>
+
+</body>
+</html>

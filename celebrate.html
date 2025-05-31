@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celebrate Your Small Wins!</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+      color: #1f2937;
+      overflow: hidden;
+    }
+    header {
+      background-color: #f472b6;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    main {
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: #fff0f5;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 1;
+    }
+    h2, h3 {
+      color: #be185d;
+    }
+    input, button {
+      font-size: 1rem;
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #f472b6;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #ec4899;
+    }
+    .celebration {
+      font-size: 1.5rem;
+      color: #dc2626;
+      text-align: center;
+      margin-top: 2rem;
+      font-weight: bold;
+      white-space: pre-line;
+    }
+    #savedWins {
+      margin-top: 2rem;
+      padding: 1rem;
+      background-color: #fff7fb;
+      border: 2px dashed #f472b6;
+      border-radius: 10px;
+    }
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0.5rem 0;
+    }
+    .delete-btn {
+      background-color: #ef4444;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 0.3rem 0.6rem;
+      cursor: pointer;
+    }
+    .delete-btn:hover {
+      background-color: #dc2626;
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="sprinkles"></canvas>
+  <header>
+    <h1>🎉 Celebrate Your Small Wins! 🎉</h1>
+    <p>Because every step forward deserves a party!</p>
+  </header>
+
+  <main>
+    <h2>Share Your Achievement</h2>
+    <input type="text" id="winInput" placeholder="I finished my assignment!">
+    <button onclick="celebrateWin()">Celebrate Now</button>
+
+    <div id="message" class="celebration"></div>
+
+    <div id="savedWins">
+      <h3>🎯 Your Celebrated Wins:</h3>
+      <ul id="winsList"></ul>
+    </div>
+  </main>
+
+  <script>
+    const compliments = [
+      "You're doing amazing! 🌟",
+      "Keep shining! ✨",
+      "You inspire others! 💖",
+      "Every step matters, and you're rocking it! 🚀",
+      "You're unstoppable! 💪",
+      "Your progress is worth cheering for! 🎊"
+    ];
+
+    function celebrateWin() {
+      const input = document.getElementById('winInput').value.trim();
+      const message = document.getElementById('message');
+      const winsList = document.getElementById('winsList');
+
+      if (input === '') {
+        message.textContent = 'Please share something you accomplished!';
+        return;
+      }
+
+      const randomCompliment = compliments[Math.floor(Math.random() * compliments.length)];
+      message.textContent = `🎈 ${input} 🎈\n${randomCompliment}`;
+      throwSprinkles();
+
+      const listItem = document.createElement('li');
+      listItem.textContent = input;
+
+      const deleteBtn = document.createElement('button');
+      deleteBtn.textContent = '🗑️';
+      deleteBtn.className = 'delete-btn';
+      deleteBtn.onclick = () => listItem.remove();
+
+      listItem.appendChild(deleteBtn);
+      winsList.appendChild(listItem);
+
+      document.getElementById('winInput').value = '';
+    }
+
+    function throwSprinkles() {
+      const canvas = document.getElementById('sprinkles');
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const particles = Array.from({ length: 200 }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 6 + 2,
+        color: `hsl(${Math.random() * 360}, 100%, 70%)`,
+        dx: (Math.random() - 0.5) * 4,
+        dy: Math.random() * 4 + 1
+      }));
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let p of particles) {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.fill();
+          p.x += p.dx;
+          p.y += p.dy;
+          if (p.y > canvas.height) p.y = 0;
+        }
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    }
+  </script>
+</body>
+</html>

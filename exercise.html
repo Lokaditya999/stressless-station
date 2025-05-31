@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>30 Minutes Daily Exercise for Stress Relief</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #fef9c3, #fcd34d);
+      margin: 0;
+      padding: 0;
+      color: #1f2937;
+    }
+    header {
+      background-color: #f59e0b;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #b45309;
+    }
+    .exercise-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .exercise-item {
+      background: #fef3c7;
+      padding: 1rem;
+      border-radius: 10px;
+      border: 1px solid #fde68a;
+      cursor: pointer;
+    }
+    .exercise-item:hover {
+      background-color: #fde68a;
+    }
+    .tip {
+      margin-top: 2rem;
+      background: #fff7ed;
+      padding: 1rem;
+      border-left: 6px solid #fb923c;
+      border-radius: 6px;
+    }
+    .timer {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #dc2626;
+    }
+    .stop-button {
+      display: block;
+      margin: 1rem auto;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      background-color: #ef4444;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .stop-button:hover {
+      background-color: #dc2626;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #b45309;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Daily 30-Minute Exercise</h1>
+    <p>Relieve your stress through movement and joy</p>
+  </header>
+
+  <main>
+    <h2>Choose Your Favorite Exercise</h2>
+    <div class="exercise-list">
+      <div class="exercise-item" onclick="startTimer('Walking')">
+        <h3>Walking</h3>
+        <p>Take a brisk walk around your neighborhood or a nearby park. Walking improves mood, clears the mind, and keeps your heart healthy.</p>
+      </div>
+      <div class="exercise-item" onclick="startTimer('Dancing')">
+        <h3>Dancing</h3>
+        <p>Put on your favorite music and dance like nobody's watching. It's fun, expressive, and releases endorphins.</p>
+      </div>
+      <div class="exercise-item" onclick="startTimer('Sports')">
+        <h3>Sports</h3>
+        <p>Join a group to play basketball, football, or any sport you enjoy. Team sports help you bond socially and physically de-stress.</p>
+      </div>
+    </div>
+
+    <div id="timerSection" class="timer"></div>
+    <button id="stopButton" class="stop-button" onclick="stopTimer()" style="display:none;">Stop Timer</button>
+
+    <div class="tip">
+      <strong>Tip:</strong> Stay consistent. Even light exercise every day can drastically reduce anxiety and improve sleep quality.
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Stress-Free Life. All rights reserved.</p>
+  </footer>
+
+  <script>
+    let timerInterval;
+
+    function startTimer(activity) {
+      clearInterval(timerInterval);
+      document.getElementById("stopButton").style.display = "block";
+      let duration = 30 * 60; // 30 minutes in seconds
+      const timerDisplay = document.getElementById("timerSection");
+
+      function updateTimer() {
+        const minutes = Math.floor(duration / 60);
+        const seconds = duration % 60;
+        timerDisplay.textContent = `${activity} - Time Left: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+        if (duration <= 0) {
+          clearInterval(timerInterval);
+          timerDisplay.textContent = `${activity} complete! Great job!`;
+          document.getElementById("stopButton").style.display = "none";
+        }
+        duration--;
+      }
+
+      updateTimer();
+      timerInterval = setInterval(updateTimer, 1000);
+    }
+
+    function stopTimer() {
+      clearInterval(timerInterval);
+      document.getElementById("timerSection").textContent = "Timer stopped.";
+      document.getElementById("stopButton").style.display = "none";
+    }
+  </script>
+</body>
+</html>
