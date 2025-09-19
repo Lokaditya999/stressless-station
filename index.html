@@ -5,11 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Every Day Wins</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       background-color: #000;
       color: #fff;
@@ -17,171 +13,101 @@
       animation: glowBackground 5s infinite alternate;
     }
     @keyframes glowBackground {
-      0% {
-        background-color: #000000;
-        box-shadow: inset 0 0 20px #25283b, inset 0 0 60px #25283b;
-      }
-      100% {
-        background-color: #111111;
-        box-shadow: inset 0 0 40px #4e5bff, inset 0 0 120px #4e5bff;
-      }
+      0% { background-color: #000000; box-shadow: inset 0 0 20px #25283b, inset 0 0 60px #25283b;}
+      100% { background-color: #111111; box-shadow: inset 0 0 40px #4e5bff, inset 0 0 120px #4e5bff;}
     }
-    .banner {
-      padding: 40px 0;
-      text-align: center;
-    }
+    .banner { padding: 40px 0; text-align: center;}
     .headline {
-      font-size: 3em;
-      font-weight: bold;
-      margin-bottom: 30px;
+      font-size: 3em; font-weight: bold; margin-bottom: 30px;
       animation: slideIn 3s ease-in-out infinite alternate;
       background: linear-gradient(90deg, #ff6ec4, #7873f5);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    @keyframes slideIn {
-      0% { transform: translateX(-20px);}
-      100% { transform: translateX(20px);}
-    }
+    @keyframes slideIn { 0% {transform: translateX(-20px);} 100% {transform: translateX(20px);} }
     .content-block {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      max-width: 1000px;
-      margin: 30px auto;
-      padding: 20px;
-      border-bottom: 1px solid #333;
+      display: flex; align-items: center; gap: 20px;
+      max-width: 1000px; margin: 30px auto; padding: 20px; border-bottom: 1px solid #333;
     }
     .content-block img {
-      width: 150px;
-      transition: transform 0.3s ease;
-      border-radius: 10px;
-      cursor: pointer;
+      width: 150px; transition: transform 0.3s ease; border-radius: 10px; cursor: pointer;
       box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
     }
-    .content-block img:hover {
-      transform: scale(1.4);
-    }
-    .info {
-      flex: 1;
-    }
-    .info h2 {
-      margin-bottom: 8px;
-      font-size: 1.5em;
-      color: #ff6ec4;
-    }
-    .info p {
-      color: #ddd;
-      line-height: 1.5;
-    }
-    /* LOGIN BUTTON + MODAL STYLES */
+    .content-block img:hover { transform: scale(1.4);}
+    .info { flex: 1;}
+    .info h2 { margin-bottom: 8px; font-size: 1.5em; color: #ff6ec4;}
+    .info p { color: #ddd; line-height: 1.5;}
     .login-container {
-      position: fixed;
-      top: 30px;
-      right: 40px;
-      z-index: 2000;
+      position: fixed; top: 30px; right: 40px; z-index: 2000;
+      display: flex; align-items: center; min-width: 120px;
     }
     #loginBtn {
-      padding: 12px 30px;
-      font-size: 1em;
+      padding: 12px 30px; font-size: 1em;
       background: linear-gradient(90deg, #4e5bff, #ff6ec4);
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      box-shadow: 0 3px 15px #4e5bff75;
-      transition: background 0.3s;
+      color: #fff; border: none; border-radius: 6px; cursor: pointer;
+      box-shadow: 0 3px 15px #4e5bff75; transition: background 0.3s;
     }
-    #loginBtn:hover {
-      background: linear-gradient(90deg, #ff6ec4, #4e5bff);
+    #loginBtn:hover { background: linear-gradient(90deg, #ff6ec4, #4e5bff);}
+    .user-email {
+      font-size: 1.1em; background: linear-gradient(90deg, #ff6ec4, #4e5bff);
+      background-clip: text; -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; margin-right: 10px;
+      font-weight: bold;
     }
+    .logout-btn {
+      padding: 8px 16px; color: #fff; background: #333;
+      border: none; border-radius: 6px; cursor: pointer;
+      margin-left:8px; font-size:0.9em; transition: background 0.3s;
+    }
+    .logout-btn:hover { background: #ff6ec4; color: #111;}
     .modal {
-      display: none;
-      position: fixed;
-      z-index: 3000;
-      left: 0;
-      top: 0;
-      width: 100vw;
-      height: 100vh;
-      overflow: auto;
-      background: rgba(30,30,30,0.87);
+      display: none; position: fixed; z-index: 3000; left: 0; top: 0;
+      width: 100vw; height: 100vh; overflow: auto; background: rgba(30,30,30,0.87);
     }
     .modal-content {
-      background: #222245;
-      margin: 10% auto;
-      padding: 40px 30px 30px 30px;
-      border-radius: 10px;
-      width: 350px;
-      box-shadow: 0 8px 40px #4e5bffba;
-      position: relative;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      background: #222245; margin: 10% auto; padding: 40px 30px 30px 30px; border-radius: 10px;
+      width: 350px; box-shadow: 0 8px 40px #4e5bffba; position: relative; color: #fff;
+      display: flex; flex-direction: column; align-items: center;
     }
-    .modal-content h2 {
-      margin-bottom: 20px;
-      color: #ff6ec4;
-    }
+    .modal-content h2 { margin-bottom: 20px; color: #ff6ec4;}
     .modal-content form input {
-      width: 100%;
-      padding: 12px 10px;
-      margin: 16px 0;
-      border: none;
-      border-radius: 6px;
-      background: #232346;
-      color: #fff;
-      font-size: 1em;
+      width: 100%; padding: 12px 10px; margin: 16px 0; border: none;
+      border-radius: 6px; background: #232346; color: #fff; font-size: 1em;
     }
     .modal-content form button {
-      width: 100%;
-      padding: 12px 0;
+      width: 100%; padding: 12px 0;
       background: linear-gradient(90deg, #ff6ec4, #4e5bff);
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      font-size: 1em;
-      cursor: pointer;
-      margin-top:10px;
+      color: #fff; border: none; border-radius: 6px; font-size: 1em;
+      cursor: pointer; margin-top:10px;
     }
     .close {
-      position: absolute;
-      top: 12px;
-      right: 15px;
-      font-size: 1.7em;
-      color: #fff;
-      cursor: pointer;
+      position: absolute; top: 12px; right: 15px; font-size: 1.7em;
+      color: #fff; cursor: pointer;
     }
     .modal-content form label {
-      color: #fff;
-      text-align: left;
-      width: 100%;
-      display: block;
-      margin-top: 8px;
-      margin-bottom: 4px;
-      font-size: 0.97em;
+      color: #fff; text-align: left; width: 100%; display: block;
+      margin-top: 8px; margin-bottom: 4px; font-size: 0.97em;
     }
   </style>
 </head>
 <body>
-  <!-- Login Button and Modal -->
-  <div class="login-container">
+  <!-- Login Button/User Email and Modal -->
+  <div class="login-container" id="loginContainer">
     <button id="loginBtn">Login</button>
   </div>
   <div id="loginModal" class="modal">
     <div class="modal-content">
       <span class="close" id="closeModal">&times;</span>
       <h2>Login</h2>
-      <form>
-        <label for="email">Email</label>
-        <input type="email" id="email" placeholder="Enter your email" required />
-        <label for="password">Password</label>
-        <input type="password" id="password" placeholder="Enter your password" required />
+      <form id="loginForm">
+        <label for="email-input">Email</label>
+        <input type="email" id="email-input" placeholder="Enter your email" required />
+        <label for="password-input">Password</label>
+        <input type="password" id="password-input" placeholder="Enter your password" required />
         <button type="submit">Submit</button>
       </form>
     </div>
   </div>
-
   <div class="banner">
     <h1 class="headline">Every Day Wins</h1>
   </div>
@@ -234,11 +160,42 @@
     const loginBtn = document.getElementById('loginBtn');
     const loginModal = document.getElementById('loginModal');
     const closeModal = document.getElementById('closeModal');
+    const loginForm = document.getElementById('loginForm');
+    const loginContainer = document.getElementById('loginContainer');
 
+    // Show modal when clicking login
     loginBtn.onclick = () => { loginModal.style.display = "block"; };
     closeModal.onclick = () => { loginModal.style.display = "none"; };
     window.onclick = (event) => {
       if (event.target == loginModal) { loginModal.style.display = "none"; }
+    };
+
+    function setLoggedIn(email) {
+      loginContainer.innerHTML =
+        `<span class="user-email">${email}</span>
+         <button class="logout-btn" id="logoutBtn">Logout</button>`;
+      document.body.classList.add("site-on");
+      document.getElementById('logoutBtn').onclick = function() {
+        localStorage.removeItem('userEmail');
+        location.reload();
+      };
+    }
+
+    loginForm.onsubmit = function(e) {
+      e.preventDefault();
+      const email = document.getElementById('email-input').value.trim();
+      const password = document.getElementById('password-input').value.trim();
+      if(email && password) {
+        localStorage.setItem('userEmail', email);
+        setLoggedIn(email);
+        loginModal.style.display = "none";
+      }
+    };
+    window.onload = function() {
+      const email = localStorage.getItem('userEmail');
+      if(email) {
+        setLoggedIn(email);
+      }
     };
   </script>
 </body>
