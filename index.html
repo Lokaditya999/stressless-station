@@ -10,14 +10,12 @@
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
       background-color: #000;
       color: #fff;
       font-family: 'Arial', sans-serif;
       animation: glowBackground 5s infinite alternate;
     }
-
     @keyframes glowBackground {
       0% {
         background-color: #000000;
@@ -28,12 +26,10 @@
         box-shadow: inset 0 0 40px #4e5bff, inset 0 0 120px #4e5bff;
       }
     }
-
     .banner {
       padding: 40px 0;
       text-align: center;
     }
-
     .headline {
       font-size: 3em;
       font-weight: bold;
@@ -43,16 +39,10 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-
     @keyframes slideIn {
-      0% {
-        transform: translateX(-20px);
-      }
-      100% {
-        transform: translateX(20px);
-      }
+      0% { transform: translateX(-20px);}
+      100% { transform: translateX(20px);}
     }
-
     .content-block {
       display: flex;
       align-items: center;
@@ -62,7 +52,6 @@
       padding: 20px;
       border-bottom: 1px solid #333;
     }
-
     .content-block img {
       width: 150px;
       transition: transform 0.3s ease;
@@ -70,33 +59,132 @@
       cursor: pointer;
       box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
     }
-
     .content-block img:hover {
       transform: scale(1.4);
     }
-
     .info {
       flex: 1;
     }
-
     .info h2 {
       margin-bottom: 8px;
       font-size: 1.5em;
       color: #ff6ec4;
     }
-
     .info p {
       color: #ddd;
       line-height: 1.5;
     }
+    /* LOGIN BUTTON + MODAL STYLES */
+    .login-container {
+      position: fixed;
+      top: 30px;
+      right: 40px;
+      z-index: 2000;
+    }
+    #loginBtn {
+      padding: 12px 30px;
+      font-size: 1em;
+      background: linear-gradient(90deg, #4e5bff, #ff6ec4);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 3px 15px #4e5bff75;
+      transition: background 0.3s;
+    }
+    #loginBtn:hover {
+      background: linear-gradient(90deg, #ff6ec4, #4e5bff);
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 3000;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: auto;
+      background: rgba(30,30,30,0.87);
+    }
+    .modal-content {
+      background: #222245;
+      margin: 10% auto;
+      padding: 40px 30px 30px 30px;
+      border-radius: 10px;
+      width: 350px;
+      box-shadow: 0 8px 40px #4e5bffba;
+      position: relative;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .modal-content h2 {
+      margin-bottom: 20px;
+      color: #ff6ec4;
+    }
+    .modal-content form input {
+      width: 100%;
+      padding: 12px 10px;
+      margin: 16px 0;
+      border: none;
+      border-radius: 6px;
+      background: #232346;
+      color: #fff;
+      font-size: 1em;
+    }
+    .modal-content form button {
+      width: 100%;
+      padding: 12px 0;
+      background: linear-gradient(90deg, #ff6ec4, #4e5bff);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top:10px;
+    }
+    .close {
+      position: absolute;
+      top: 12px;
+      right: 15px;
+      font-size: 1.7em;
+      color: #fff;
+      cursor: pointer;
+    }
+    .modal-content form label {
+      color: #fff;
+      text-align: left;
+      width: 100%;
+      display: block;
+      margin-top: 8px;
+      margin-bottom: 4px;
+      font-size: 0.97em;
+    }
   </style>
 </head>
 <body>
+  <!-- Login Button and Modal -->
+  <div class="login-container">
+    <button id="loginBtn">Login</button>
+  </div>
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <h2>Login</h2>
+      <form>
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email" required />
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
 
   <div class="banner">
     <h1 class="headline">Every Day Wins</h1>
   </div>
-
   <div class="content-block">
     <a href="meditatiion.html" target="_blank">
       <img src="med.jpg" alt="Meditation" />
@@ -106,7 +194,6 @@
       <p>Calm your mind and focus your energy with guided meditation. A few minutes daily can boost mental clarity.</p>
     </div>
   </div>
-
   <div class="content-block">
     <a href="journal.html" target="_blank">
       <img src="journalise.jpg" alt="Journaling" />
@@ -116,7 +203,6 @@
       <p>Write your thoughts, track habits, and reflect on your day. A great way to gain insight into your progress.</p>
     </div>
   </div>
-
   <div class="content-block">
     <a href="music.html" target="_blank">
       <img src="musics.jpg" alt="Music" />
@@ -126,7 +212,6 @@
       <p>Let your soul breathe through music. Whether you're relaxing or focusing, the right tunes uplift your spirit.</p>
     </div>
   </div>
-
   <div class="content-block">
     <a href="exercise.html" target="_blank">
       <img src="collegedance.png" alt="Exercise" />
@@ -136,7 +221,6 @@
       <p>Move your body and stay active. Dance, run, stretch—every step is a victory for your health and happiness.</p>
     </div>
   </div>
-
   <div class="content-block">
     <a href="celebrate.html" target="_blank">
       <img src="smaller.jpg" alt="Celebrate" />
@@ -146,6 +230,16 @@
       <p>Even small wins matter. Take a moment to reward yourself and appreciate how far you've come.</p>
     </div>
   </div>
+  <script>
+    const loginBtn = document.getElementById('loginBtn');
+    const loginModal = document.getElementById('loginModal');
+    const closeModal = document.getElementById('closeModal');
 
+    loginBtn.onclick = () => { loginModal.style.display = "block"; };
+    closeModal.onclick = () => { loginModal.style.display = "none"; };
+    window.onclick = (event) => {
+      if (event.target == loginModal) { loginModal.style.display = "none"; }
+    };
+  </script>
 </body>
 </html>
